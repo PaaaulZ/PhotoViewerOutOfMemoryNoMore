@@ -1,0 +1,1 @@
+python fix.py "%1"
