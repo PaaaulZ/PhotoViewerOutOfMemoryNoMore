@@ -7,6 +7,8 @@ Tested on:
 
 **Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601**
 
+**Windows 11 Pro 10.0.22000 build 22000**
+
 # Why?
 
 Why not?
