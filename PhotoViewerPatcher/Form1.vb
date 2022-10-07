@@ -79,6 +79,7 @@ Public Class Form1
 
             strTemp.Append(hexTMP)
         Next
+
         Return strTemp.ToString()
 
     End Function
@@ -135,6 +136,42 @@ Public Class Form1
         End If
 
         MsgBox("Done.")
+
+    End Sub
+
+    Private Sub btnPatchSigScan_Click(sender As Object, e As EventArgs) Handles btnPatchSigScan.Click
+
+        Dim pathToFile As String = ""
+        Dim pathToFileSig As String = ""
+
+        If txtPathSigScanner.Text = "" Then
+            MsgBox("Please insert path for SigScanner.exe or Browse. Usually under ""Program files\Windows PhotoViewer""")
+            Environment.Exit(1)
+        Else
+            pathToFileSig = txtPathSigScanner.Text
+        End If
+
+        If txtPath.Text = "" Then
+            MsgBox("Please insert path for ImagingEngine.dll or Browse. Usually under ""Program files\Windows PhotoViewer""")
+            Environment.Exit(1)
+        Else
+            pathToFile = txtPath.Text
+        End If
+
+        Dim p As New Process()
+        p.StartInfo.FileName = pathToFileSig
+        p.StartInfo.Arguments = pathToFile + " " + pathToFile.Replace("ImagingEngine.dll", "ImagingEngine.dll.bak")
+        p.Start()
+
+    End Sub
+
+    Private Sub btnBrowseSig_Click(sender As Object, e As EventArgs) Handles btnBrowseSig.Click
+
+        Dim a As New OpenFileDialog() With {.Filter = "SigScanner executable|SigScanner.exe"}
+
+        If a.ShowDialog() = DialogResult.OK Then
+            txtPathSigScanner.Text = a.FileName
+        End If
 
     End Sub
 End Class

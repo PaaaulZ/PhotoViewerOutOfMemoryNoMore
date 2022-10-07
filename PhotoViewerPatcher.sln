@@ -1,22 +1,51 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "PhotoViewerPatcher", "PhotoViewerPatcher\PhotoViewerPatcher.vbproj", "{F18617F9-CFB6-4007-A96E-8C20250D8AE3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SigScanner", "SigScanner\SigScanner.vcxproj", "{86CF675E-14BF-468B-BDFF-24A06FC16CD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|x64.Build.0 = Debug|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Debug|x86.Build.0 = Debug|Any CPU
 		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|x64.ActiveCfg = Release|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|x64.Build.0 = Release|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|x86.ActiveCfg = Release|Any CPU
+		{F18617F9-CFB6-4007-A96E-8C20250D8AE3}.Release|x86.Build.0 = Release|Any CPU
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|Any CPU.Build.0 = Debug|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|x64.ActiveCfg = Debug|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|x64.Build.0 = Debug|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|x86.ActiveCfg = Debug|Win32
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Debug|x86.Build.0 = Debug|Win32
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|Any CPU.ActiveCfg = Release|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|Any CPU.Build.0 = Release|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|x64.ActiveCfg = Release|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|x64.Build.0 = Release|x64
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|x86.ActiveCfg = Release|Win32
+		{86CF675E-14BF-468B-BDFF-24A06FC16CD2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F828288-89AF-4906-9659-45C34F6C6C5F}
 	EndGlobalSection
 EndGlobal

@@ -24,6 +24,8 @@ To patch the dll or replace it you'll have to give yourself full permissions to 
 4) Patch the dll.
 5) Copy back the dll.
 
+NOTE: You must compile the SigScanner for x86 or else it will crash
+
 # How does it work?
 
 When the image contains an unknown icc profile Windows Photo Viewer tries to perform color mapping by calling **CreateMultiProfileTransform** but fails. We can patch the check to ignore the invalid icc profile.
@@ -69,3 +71,5 @@ You can edit the image with an hex editor like HxD and "corrupt the profile indi
 Search for the string **ICC_PROFILE** and just change a random letter (for example make it ICC_aROFILE).
 
 You can now normally open the image on every computer without needing the patch
+
+## Credits to [Mutegram](https://github.com/mxs42/mutegram/tree/master) for the ready to use signature scan and patch code!
