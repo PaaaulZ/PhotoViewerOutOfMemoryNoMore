@@ -9,23 +9,20 @@
 		return 1; \
 	}
 
-//int main()
 int wmain(int argc, wchar_t** argv)
 {
+	std::wstring filePath = argv[1];
+	std::wstring fileBackupPath = argv[2];
 
+	std::wcout << "Working on: " << filePath << std::endl;
 
-	std::wstring tgPath = argv[1];
-	std::wstring tgBackupPath = argv[2];
-
-	std::wcout << "Working on: " << tgPath << std::endl;
-
-	const auto file = CreateFile(tgPath.c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, nullptr);
+	const auto file = CreateFile(filePath.c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_EXISTING, 0, nullptr);
 	if (file == INVALID_HANDLE_VALUE)
 	{
 		const auto error = GetLastError();
 		if (error == ERROR_FILE_NOT_FOUND)
 		{
-			std::wcout << "[ERROR] Can not find ImagingEngine.dll at path " << tgPath << ".\nDid you place this tool into correct directory?.." << std::endl;
+			std::wcout << "[ERROR] Can not find ImagingEngine.dll at path " << filePath << ".\nDid you place this tool into correct directory?.." << std::endl;
 		}
 		else if (error == ERROR_SHARING_VIOLATION)
 		{
@@ -40,7 +37,7 @@ int wmain(int argc, wchar_t** argv)
 		return 1;
 	}
 
-	auto hr = CopyFile(tgPath.c_str(), tgBackupPath.c_str(), false);
+	auto hr = CopyFile(filePath.c_str(), fileBackupPath.c_str(), false);
 	ERROR_CHECK(SUCCEEDED(hr), "Could not create backup");
 	std::wcout << "[OK] Backup created." << std::endl;
 
