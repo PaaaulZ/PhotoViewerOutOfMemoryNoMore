@@ -3,14 +3,12 @@
 ## Patch "Out of memory" exception when opening images containing an unknown color profile
 
 Tested on: 
-
-**Windows 10 Pro Version 1903 Build 18362.356**
-
-**Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601**
-
-**Windows 11 Pro 10.0.22000 build 22000**
-
-**Windows 10 Version 22H2 Build 19045.2486**
+```
+Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601
+Windows 10 Pro Version 1903 Build 18362.356
+Windows 10 Version 22H2 Build 19045.2486
+Windows 11 Pro 10.0.22000 build 22000
+```
 
 # Support
 
@@ -32,9 +30,7 @@ To patch the dll or replace it you'll have to give yourself full permissions to 
 5) Copy back the dll.
 
 I suggest patching both the x86 and x64 dll, most of the times Windows uses the x86 one even if you are in a x64 environment.
-Sometimes the antivirus flags SigScanner but it's a false positive so please add it to the exclusions list, maybe one day I'll rework it and will include it in the VB.NET project to fix this.
-
-IMPORTANT: You must compile the SigScanner for x86 or else it will crash
+Sometimes the antivirus may flag the .exe but it's a false positive, please add it to the exclusions list. 
 
 # How does it work?
 
@@ -66,14 +62,6 @@ Changing the check from JNE to JMP opens the image correctly. Ignoring exception
 4) Search for an intermodular call to **CreateMultiProfileTransform**
 5) Change the **JNE** to **JMP**
 
-# Wanna add your dll version to the patch?
-
-Fork this project and add the SHA-256 hash of the file and offset to patch to the **Form1_Load** as seen in this example:
-
-```vb.net
-VALID_CRC.Add("[SHA-256 hash]", [jne offset])
-```
-
 # Alternative method (patch the single image instead of the software)
 
 You can edit the image with an hex editor like HxD and "corrupt the profile indication".
@@ -81,5 +69,3 @@ You can edit the image with an hex editor like HxD and "corrupt the profile indi
 Search for the string **ICC_PROFILE** and just change a random letter (for example make it ICC_aROFILE).
 
 You can now normally open the image on every computer without needing the patch
-
-## Credits to [Mutegram](https://github.com/mxs42/mutegram/tree/master) for the ready to use signature scan and patch code!
