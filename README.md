@@ -1,4 +1,4 @@
-# Windows Photo Viewer
+# Windows Photo Viewer Patcher
 
 ## Patch "Out of memory" exception when opening images containing an unknown color profile
 
@@ -9,11 +9,6 @@ Windows 10 Pro Version 1903 Build 18362.356
 Windows 10 Version 22H2 Build 19045.2486
 Windows 11 Pro 10.0.22000 build 22000
 ```
-
-# Support
-
-[!["Buy Me A Beer"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/paaaulz)
-
 # Why?
 
 Why not?
