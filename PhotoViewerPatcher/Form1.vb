@@ -8,21 +8,41 @@ Public Class Form1
         File.Copy(path, $"{System.IO.Path.GetDirectoryName(path)}\ImagingEngine.dll.bak", True)
     End Sub
 
+    Private Sub TakeOwnership(ByVal path As String)
+        RunCommand("takeown.exe", $"/R /F ""{System.IO.Path.GetDirectoryName(path)}""")
+        RunCommand("icacls.exe", $"""{path}"" /grant Administrators:F")
+    End Sub
+
+    Private Sub RunCommand(ByVal command As String, ByVal arguments As String)
+        Dim p As Process = Process.Start(command, arguments)
+        While True
+            ' HACK: race condition fix.
+            If p.HasExited Then
+                Return
+            End If
+        End While
+    End Sub
+
     Private Sub PatchFile(ByVal path As String, ByVal offset As Integer)
 
-        CreateBackup(path)
-
-        Using fs As New FileStream(path, FileMode.Open, FileAccess.ReadWrite)
-            fs.Seek(offset, SeekOrigin.Begin)
-
-            If fs.ReadByte() = &H75 Then
+        TakeOwnership(path)
+        Try
+            CreateBackup(path)
+            Using fs As New FileStream(path, FileMode.Open, FileAccess.ReadWrite)
                 fs.Seek(offset, SeekOrigin.Begin)
-                fs.WriteByte(&HEB)
-            Else
-                MsgBox("Invalid byte at offset, unsupported dll version?")
-                Environment.Exit(1)
-            End If
-        End Using
+
+                If fs.ReadByte() = &H75 Then
+                    fs.Seek(offset, SeekOrigin.Begin)
+                    fs.WriteByte(&HEB)
+                Else
+                    MsgBox("Invalid byte at offset, unsupported dll version?")
+                    Environment.Exit(1)
+                End If
+            End Using
+        Catch ex As System.UnauthorizedAccessException
+            MsgBox("Access denied, run as administrator or manually take ownership of folder and files")
+        End Try
+
 
     End Sub
 
@@ -80,6 +100,8 @@ Public Class Form1
 
         If firstFound > 0 Then
             PatchFile(pathToFile, (firstFound + &H2))
+            ' HACK: We lose focus after running commands with Process.Start()
+            Me.Focus()
             MsgBox("Done")
         Else
             MsgBox("Could not find byte to patch. Already patched?")
@@ -88,6 +110,11 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not My.User.IsInRole(ApplicationServices.BuiltInRole.Administrator) Then
+            MsgBox("You are not running as Administrator, expect some errors")
+        End If
+    End Sub
 End Class
 
 
