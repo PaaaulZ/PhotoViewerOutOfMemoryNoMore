@@ -14,6 +14,15 @@ Windows 11 Pro 10.0.22000 build 22000
 Why not?
 Windows Photo Viewer is EOL but i like it and a lot of people still use it. Besides, on a fresh install of Windows 7 you have nothing else to open images (except Paint).
 
+### Usage
+
+1) Download the lastest release
+2) Run as Administrator
+3) Browse for ImagingEngine.dll
+4) Press "Patch"
+
+If you get an access denied error manually take ownership of the folder and give yourself full read and write permissions
+
 ### Before you start
 
 The DLL we need to patch (ImagingEngine.dll) is usually located in ```"C:\Program Files\Windows Photo Viewer\"``` or ```"C:\Program Files (x86)\Windows Photo Viewer\"```.
