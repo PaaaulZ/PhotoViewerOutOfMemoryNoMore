@@ -3,6 +3,7 @@
 
 Tested on: 
 ```
+Windows Vista Home Premium
 Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601
 Windows 10 Pro Version 1903 Build 18362.356
 Windows 10 Version 22H2 Build 19045.2486
@@ -17,16 +18,15 @@ Windows Photo Viewer is EOL but i like it and a lot of people still use it. Besi
 ### Usage
 
 1) Download the lastest release
-2) Run as Administrator
-3) Browse for ImagingEngine.dll
-4) Press "Patch"
+2) Browse for ImagingEngine.dll
+3) Press "Patch"
 
 If you get an access denied error manually take ownership of the folder and give yourself full read and write permissions
 
 ### Before you start
 
 The DLL we need to patch (ImagingEngine.dll) is usually located in ```"C:\Program Files\Windows Photo Viewer\"``` or ```"C:\Program Files (x86)\Windows Photo Viewer\"```.
-I suggest patching both the x86 and x64 dll, most of the times Windows uses the x86 one even if you are in a x64 environment
+**I suggest patching both the x86 and x64 dll, most of the times Windows uses the x86 one even if you are in a x64 environment**
 
 Note that sometimes the antivirus may flag the .exe but it's a false positive and you can safely add it to the exclusions list. 
 
