@@ -1,14 +1,7 @@
 # Windows Photo Viewer Patcher
 ## Patch "Out of memory" exception when opening images containing an unknown color profile
 
-Tested on: 
-```
-Windows Vista Home Premium
-Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601
-Windows 10 Pro Version 1903 Build 18362.356
-Windows 10 Version 22H2 Build 19045.2486
-Windows 11 Pro 10.0.22000 build 22000
-```
+<img width="624" height="190" alt="image" src="https://github.com/user-attachments/assets/b2295bb9-efcb-423b-8422-e9b0d9d25853" />
 
 ### Why?
 
@@ -18,17 +11,28 @@ Windows Photo Viewer is EOL but i like it and a lot of people still use it. Besi
 ### Usage
 
 1) Download the lastest release
-2) Browse for ImagingEngine.dll
+2) Ensure "Auto Patch" is flagged
 3) Press "Patch"
 
-If you get an access denied error manually take ownership of the folder and give yourself full read and write permissions
+### Troubleshooting
+
+* If "Auto Patch" fails you can uncheck it and manually browse for the correct path.
+* If you get an access denied error manually take ownership of the folder and give yourself full read and write permissions
+* If your antivirus flags the .exe it's a false positive, you can safely add it to the exclusions list.
 
 ### Before you start
 
 The DLL we need to patch (ImagingEngine.dll) is usually located in ```"C:\Program Files\Windows Photo Viewer\"``` or ```"C:\Program Files (x86)\Windows Photo Viewer\"```.
-**I suggest patching both the x86 and x64 dll, most of the times Windows uses the x86 one even if you are in a x64 environment**
+**I suggest patching both the x86 and x64 dll, most of the times Windows uses the x86 one even if you are in a x64 environment. Just leave "Auto Patch" one, it will patch both**
 
-Note that sometimes the antivirus may flag the .exe but it's a false positive and you can safely add it to the exclusions list. 
+Tested on: 
+```
+Windows Vista Home Premium
+Windows 7 Enterprise Version 6.1.7601 Service Pack 1 Build 7601
+Windows 10 Pro Version 1903 Build 18362.356
+Windows 10 Version 22H2 Build 19045.2486
+Windows 11 Pro 10.0.22000 build 22000
+```
 
 ### How does it work?
 
