@@ -26,6 +26,7 @@ Partial Class Form1
         Me.txtPath = New System.Windows.Forms.TextBox()
         Me.lblPath = New System.Windows.Forms.Label()
         Me.btnPatch = New System.Windows.Forms.Button()
+        Me.chkAutoPatch = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'btnBrowse
@@ -62,11 +63,24 @@ Partial Class Form1
         Me.btnPatch.Text = "Patch"
         Me.btnPatch.UseVisualStyleBackColor = True
         '
+        'chkAutoPatch
+        '
+        Me.chkAutoPatch.AutoSize = True
+        Me.chkAutoPatch.Checked = True
+        Me.chkAutoPatch.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkAutoPatch.Location = New System.Drawing.Point(387, 65)
+        Me.chkAutoPatch.Name = "chkAutoPatch"
+        Me.chkAutoPatch.Size = New System.Drawing.Size(79, 17)
+        Me.chkAutoPatch.TabIndex = 3
+        Me.chkAutoPatch.Text = "Auto Patch"
+        Me.chkAutoPatch.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 157)
+        Me.Controls.Add(Me.chkAutoPatch)
         Me.Controls.Add(Me.lblPath)
         Me.Controls.Add(Me.txtPath)
         Me.Controls.Add(Me.btnPatch)
@@ -82,4 +96,5 @@ Partial Class Form1
     Friend WithEvents txtPath As TextBox
     Friend WithEvents lblPath As Label
     Friend WithEvents btnPatch As Button
+    Friend WithEvents chkAutoPatch As CheckBox
 End Class

@@ -60,14 +60,20 @@ Public Class Form1
 
     Private Sub btnPatch_Click(sender As Object, e As EventArgs) Handles btnPatch.Click
 
-        Dim pathToFile As String = ""
+        Dim pathx64 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows Photo Viewer\ImagingEngine.dll"
+        Dim pathx86 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)}\Windows Photo Viewer\ImagingEngine.dll"
 
-        If txtPath.Text = "" Then
-            MsgBox("Please insert path for ImagingEngine.dll or Browse. Usually under ""Program files\Windows PhotoViewer""")
-            Environment.Exit(1)
-        Else
-            pathToFile = txtPath.Text
+        If System.IO.File.Exists(pathx64) Then
+            PrepareFileForPatch(pathx64)
         End If
+
+        If System.IO.File.Exists(pathx86) Then
+            PrepareFileForPatch(pathx86)
+        End If
+
+    End Sub
+
+    Private Sub PrepareFileForPatch(ByVal pathToFile As String)
 
         Dim j As Integer, firstFound As Integer = 0
         Dim patternSplit As String() = PATTERN.Split(" ")
@@ -102,18 +108,22 @@ Public Class Form1
             PatchFile(pathToFile, (firstFound + &H2))
             ' HACK: We lose focus after running commands with Process.Start()
             Me.Focus()
-            MsgBox("Done")
+            MsgBox($"Done {pathToFile}")
         Else
-            MsgBox("Could not find byte to patch. Already patched?")
+            MsgBox($"Could not find byte to patch for {pathToFile}. Already patched?")
             Return
         End If
-
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If Not My.User.IsInRole(ApplicationServices.BuiltInRole.Administrator) Then
             MsgBox("You are not running as Administrator, expect some errors")
         End If
+    End Sub
+
+    Private Sub chkAutoPatch_CheckedChanged(sender As Object, e As EventArgs) Handles chkAutoPatch.CheckedChanged
+        txtPath.Enabled = Not chkAutoPatch.Checked
+        btnBrowse.Enabled = Not chkAutoPatch.Checked
     End Sub
 End Class
 
