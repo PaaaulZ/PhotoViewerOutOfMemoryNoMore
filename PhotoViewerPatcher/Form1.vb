@@ -60,15 +60,23 @@ Public Class Form1
 
     Private Sub btnPatch_Click(sender As Object, e As EventArgs) Handles btnPatch.Click
 
-        Dim pathx64 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows Photo Viewer\ImagingEngine.dll"
-        Dim pathx86 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)}\Windows Photo Viewer\ImagingEngine.dll"
+        If chkAutoPatch.Checked Then
+            Dim pathx64 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\Windows Photo Viewer\ImagingEngine.dll"
+            Dim pathx86 As String = $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)}\Windows Photo Viewer\ImagingEngine.dll"
 
-        If System.IO.File.Exists(pathx64) Then
-            PrepareFileForPatch(pathx64)
-        End If
+            If System.IO.File.Exists(pathx64) Then
+                PrepareFileForPatch(pathx64)
+            End If
 
-        If System.IO.File.Exists(pathx86) Then
-            PrepareFileForPatch(pathx86)
+            If System.IO.File.Exists(pathx86) Then
+                PrepareFileForPatch(pathx86)
+            End If
+        Else
+            If Not String.IsNullOrWhiteSpace(txtPath.Text) AndAlso System.IO.File.Exists(txtPath.Text) Then
+                PrepareFileForPatch(txtPath.Text)
+            Else
+                MsgBox($"File {txtPath.Text} does not exist")
+            End If
         End If
 
     End Sub
